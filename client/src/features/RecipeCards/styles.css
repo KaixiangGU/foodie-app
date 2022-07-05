@@ -1,0 +1,14 @@
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.card:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  border-bottom: 4px solid orange;
+}
