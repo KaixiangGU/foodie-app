@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/recipes";
+const url = "https://foodie-app-project.herokuapp.com/recipes";
 
 export const fetchRecipes = () => axios.get(url);
 export const createRecipe = (newRecipe) => axios.post(url, newRecipe);
