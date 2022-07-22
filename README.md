@@ -10,11 +10,11 @@ This is my first time that I built a MERN stack app. It really helps me to under
 
 #### Frontend:
 
-React.js, Redux, Material UI, React Router, Axios
+React.js, Redux, Material UI, React Router, Axios, Google Identity Service
 
 #### Backend:
 
-Node.js, Express
+Node.js, Express, JWT, Google auth library, bcrypt
 
 #### Database:
 
@@ -28,23 +28,28 @@ MongoDB
 
 ### Key Features
 
-- Multistep recipe form
-- Create and post new recipe
-- Delete recipe
-- Edit posted recipes
-- Add favorite recipes
-- Show faorite recipes
-- Recipe details page
+- Show all posted recipes on home page
+- Navigate to recipe details page when click recipe card
+- Sign up a new account with email and password
+- Sign in with email and Google login<br/>
+
+#### After sign in users are allowed to:
+
+- Create new recipe
+- Edit or delete posted recipes
+- Add favorite recipes to your account
+- Only show favorite recipes
+- Only show recipes that are created by user
+- Log out
 
 ### Potential features in the future
 
-- User authentication
 - Upload multiple images when create recipe
 - Recipes Pagination
 - Ratings
 - Search recipe
 - User comments
-- Beautifully designed welcome page
+- Welcome page
 
 ## Getting Started
 

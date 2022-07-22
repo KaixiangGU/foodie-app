@@ -1,13 +1,15 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 import { OAuth2Client } from "google-auth-library";
 
+dotenv.config();
 const secret = "test";
 
 const auth = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     console.log(token.length);
-    const CLIENT_ID = "1048352977453-i02u1k8gqqkg44mlbrq4dnghounhm42p.apps.googleusercontent.com";
+    const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
     const client = new OAuth2Client(CLIENT_ID);
 
     if (token.length < 500) {
