@@ -24,6 +24,8 @@ export const StateContext = ({ children }) => {
   const [recipe, setRecipe] = useState(emptyRecipe);
   const [imageInfo, setImageInfo] = useState("");
   const [showFavoriteRecipes, setShowFavoriteRecipes] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(true);
+  const [filterRecipes, setFilterRecipes] = useState(false);
   const [ingredient, setIngredient] = useState({
     name: "",
     amount: "",
@@ -85,6 +87,10 @@ export const StateContext = ({ children }) => {
         setImageInfo,
         setShowFavoriteRecipes,
         showFavoriteRecipes,
+        isSignUp,
+        setIsSignUp,
+        filterRecipes,
+        setFilterRecipes,
       }}
     >
       {children}

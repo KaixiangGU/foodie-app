@@ -10,7 +10,7 @@ const IngredientsList = () => {
     useStateContext();
 
   return (
-    <Paper sx={{ p: 5, mx: "auto", my: 10, maxWidth: "70%" }} elevation={3}>
+    <Paper sx={{ p: 5 }} elevation={3} className="form">
       <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
         <Typography variant="h4" gutterBottom>
           Ingredients

@@ -10,8 +10,8 @@ const Methods = ({ handleSubmit }) => {
   const { setPage, recipe, setRecipe, handleCloseForm, method } = useStateContext();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Paper sx={{ p: 5, mx: "auto", my: 10, maxWidth: "70%" }} elevation={3}>
+    <form onSubmit={handleSubmit} className="form">
+      <Paper sx={{ p: 5 }} elevation={3}>
         <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
           <Typography variant="h4" gutterBottom>
             Methods

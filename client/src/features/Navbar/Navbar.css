@@ -1,0 +1,7 @@
+.MuiMenu-paper {
+  width: 250px;
+}
+
+.MuiList-root > div > li {
+  justify-content: center;
+}

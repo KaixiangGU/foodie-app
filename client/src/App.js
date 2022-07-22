@@ -1,10 +1,13 @@
 import { CssBaseline, Grid, Container, Modal } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import Navbar from "./features/Navbar/Navbar";
 import Recipes from "./features/Recipes/Recipes";
 import Form from "./features/Form/Form";
 import RecipeDetails from "./features/RecipeDetails/RecipeDetails";
+import Auth from "./features/Auth/Auth";
+
 import { useStateContext } from "./context/StateContext";
 import { getRecipes } from "./features/RecipeCards/RecipeSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -33,19 +36,20 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters maxWidth={false} sx={{ minWidth: "700px" }}>
+      <Container disableGutters maxWidth={false} sx={{ minWidth: "400px" }}>
         <BrowserRouter>
           <Navbar />
           <Modal
             open={showForm}
             onClose={handleCloseForm}
-            sx={{ width: "60%", mx: "auto", overflow: "auto" }}
+            sx={{ width: "100%", mx: "auto", overflow: "auto" }}
           >
             <Form />
           </Modal>
           <Routes>
             <Route path="/" element={<Recipes />} />
             <Route path="/:id" element={<RecipeDetails />} />
+            <Route path="/auth" element={<Auth />} />
           </Routes>
         </BrowserRouter>
       </Container>

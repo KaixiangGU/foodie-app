@@ -1,4 +1,3 @@
-import express from "express";
 import RecipeMessage from "../models/recipeMessages.js";
 
 export const getRecipes = async (req, res) => {
@@ -21,8 +20,9 @@ export const getRecipe = async (req, res) => {
 };
 
 export const addRecipe = async (req, res) => {
+  console.log(req.userId);
   const recipe = req.body;
-  const newRecipe = new RecipeMessage(recipe);
+  const newRecipe = new RecipeMessage({ ...recipe, creator: req.userId });
 
   try {
     await newRecipe.save();

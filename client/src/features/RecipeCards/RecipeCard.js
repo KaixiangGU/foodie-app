@@ -18,6 +18,7 @@ const RecipeCard = ({ recipe }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { setSelectedRecipeId } = useStateContext();
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   const handleLikeRecipe = (id) => {
     const newRecipe = { ...recipe, favorite: !recipe.favorite };
@@ -80,12 +81,16 @@ const RecipeCard = ({ recipe }) => {
           <IconButton size="small" onClick={() => handleLikeRecipe(recipe._id)}>
             {recipe.favorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
           </IconButton>
-          <IconButton size="small" onClick={() => setSelectedRecipeId(recipe._id)}>
-            <FontAwesomeIcon icon={faPenToSquare} />
-          </IconButton>
-          <IconButton size="small" onClick={() => dispatch(deleteRecipe(recipe._id))}>
-            <DeleteIcon />
-          </IconButton>
+          {(user?._id === recipe.creator || user?.sub === recipe.creator) && (
+            <>
+              <IconButton size="small" onClick={() => setSelectedRecipeId(recipe._id)}>
+                <FontAwesomeIcon icon={faPenToSquare} />
+              </IconButton>
+              <IconButton size="small" onClick={() => dispatch(deleteRecipe(recipe._id))}>
+                <DeleteIcon />
+              </IconButton>
+            </>
+          )}
         </Box>
       </CardContent>
     </Card>

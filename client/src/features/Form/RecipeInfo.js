@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useStateContext } from "../../context/StateContext";
 import FileBase from "react-file-base64";
 import CloseIcon from "@mui/icons-material/Close";
+import "./Form.css";
 
 import {
   Box,
@@ -14,6 +15,7 @@ import {
   InputLabel,
   Button,
   IconButton,
+  Grid,
 } from "@mui/material";
 
 const RecipeInfo = () => {
@@ -27,8 +29,8 @@ const RecipeInfo = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Paper sx={{ p: 5, mx: "auto", my: 10, maxWidth: "70%" }} elevation={3}>
+    <form onSubmit={handleSubmit} className="form">
+      <Paper sx={{ p: 5 }} elevation={3}>
         <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
           <Typography variant="h4" gutterBottom>
             {selectedRecipeId ? "Edit" : "New"} Recipe
@@ -47,52 +49,48 @@ const RecipeInfo = () => {
           required
           onChange={(e) => setRecipe({ ...recipe, title: e.target.value })}
         />
-        <TextField
-          sx={{ mb: 2 }}
-          value={recipe.author}
-          name="author"
-          variant="outlined"
-          label="Author"
-          fullWidth
-          required
-          onChange={(e) => setRecipe({ ...recipe, author: e.target.value })}
-        />
-        <Box sx={{ display: "flex", columnGap: 5, mb: 2 }}>
-          <TextField
-            value={recipe.cookTime}
-            name="cook time"
-            variant="outlined"
-            label="Cook Time"
-            fullWidth
-            required
-            onChange={(e) => setRecipe({ ...recipe, cookTime: e.target.value })}
-          />
-          <TextField
-            value={recipe.servings}
-            name="servings"
-            variant="outlined"
-            label="Servings"
-            type="number"
-            inputProps={{ min: "1" }}
-            fullWidth
-            required
-            onChange={(e) => setRecipe({ ...recipe, servings: e.target.value })}
-          />
-          <FormControl fullWidth required>
-            <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={recipe.difficulty}
-              label="Difficulty"
-              onChange={(e) => setRecipe({ ...recipe, difficulty: e.target.value })}
-            >
-              <MenuItem value={"easy"}>Easy</MenuItem>
-              <MenuItem value={"medium"}>Medium</MenuItem>
-              <MenuItem value={"difficult"}>Difficult</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
+        <Grid container rowGap={2} columnSpacing={2} sx={{ mb: 2 }}>
+          <Grid item xs={12} lg={4}>
+            <TextField
+              value={recipe.cookTime}
+              name="cook time"
+              variant="outlined"
+              label="Cook Time"
+              fullWidth
+              required
+              onChange={(e) => setRecipe({ ...recipe, cookTime: e.target.value })}
+            />
+          </Grid>
+          <Grid item xs={12} lg={4}>
+            <TextField
+              value={recipe.servings}
+              name="servings"
+              variant="outlined"
+              label="Servings"
+              type="number"
+              inputProps={{ min: "1" }}
+              fullWidth
+              required
+              onChange={(e) => setRecipe({ ...recipe, servings: e.target.value })}
+            />
+          </Grid>
+          <Grid item xs={12} lg={4}>
+            <FormControl fullWidth required>
+              <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={recipe.difficulty}
+                label="Difficulty"
+                onChange={(e) => setRecipe({ ...recipe, difficulty: e.target.value })}
+              >
+                <MenuItem value={"easy"}>Easy</MenuItem>
+                <MenuItem value={"medium"}>Medium</MenuItem>
+                <MenuItem value={"difficult"}>Difficult</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+        </Grid>
         <div>
           <FileBase
             type="file"

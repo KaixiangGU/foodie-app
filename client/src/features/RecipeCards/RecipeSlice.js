@@ -6,6 +6,7 @@ export const recipeSlice = createSlice({
   initialState: {
     loading: false,
     recipes: [],
+    filteredRecipes: [],
   },
   reducers: {
     fetchAll(state, action) {
@@ -26,6 +27,22 @@ export const recipeSlice = createSlice({
       );
     },
 
+    favoriteRecipes(state, action) {
+      state.filteredRecipes = state.recipes.filter((recipe) => recipe.favorite === true);
+    },
+
+    myRecipes(state, action) {
+      if (action.payload._id) {
+        state.filteredRecipes = state.recipes.filter(
+          (recipe) => recipe.creator === action.payload._id
+        );
+      } else {
+        state.filteredRecipes = state.recipes.filter(
+          (recipe) => recipe.creator === action.payload.sub
+        );
+      }
+    },
+
     setLoading(state, action) {
       state.loading = action.payload;
     },
@@ -44,6 +61,7 @@ export const getRecipes = () => async (dispatch) => {
 };
 
 export const createRecipe = (recipe) => async (dispatch) => {
+  console.log(recipe);
   try {
     const { data } = await api.createRecipe(recipe);
     dispatch(create(data));
@@ -71,6 +89,14 @@ export const updateRecipe = (id, post) => async (dispatch) => {
   }
 };
 
-export const { create, fetchAll, deleteRecipeReducer, update, setLoading } = recipeSlice.actions;
+export const {
+  create,
+  fetchAll,
+  deleteRecipeReducer,
+  update,
+  setLoading,
+  favoriteRecipes,
+  myRecipes,
+} = recipeSlice.actions;
 
 export default recipeSlice.reducer;

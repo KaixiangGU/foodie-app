@@ -5,51 +5,52 @@ import RecipeCard from "../RecipeCards/RecipeCard";
 import { Grid, Box, CircularProgress, createTheme, ThemeProvider } from "@mui/material";
 
 const Recipes = () => {
-  const { showFavoriteRecipes } = useStateContext();
+  const { filterRecipes } = useStateContext();
   const theme = createTheme({
     breakpoints: {
       values: {
         xs: 100,
-        sm: 900,
+        sm: 600,
         md: 1150,
+        lg: 1500,
       },
     },
   });
 
-  const allRecipes = useSelector((state) => state.recipes.recipes);
-  const favoriteRecipes = allRecipes.filter((recipe) => recipe.favorite === true);
+  const AllRecipes = useSelector((state) => state.recipes.recipes);
+  const filteredRecipes = useSelector((state) => state.recipes.filteredRecipes);
 
-  const recipes = showFavoriteRecipes ? favoriteRecipes : allRecipes;
-  // console.log(recipes);
+  const recipes = !filterRecipes ? AllRecipes : filteredRecipes;
+
   const loading = useSelector((state) => state.recipes.loading);
 
   return (
-    <Box sx={{ mt: 5 }}>
-      <Grid
-        container
-        sx={{ width: "95%", maxWidth: "1600px", mx: "auto" }}
-        justifyContent="space-evenly"
-      >
-        {loading ? (
-          <CircularProgress />
-        ) : (
-          recipes.map((recipe) => (
-            <ThemeProvider theme={theme} key={recipe._id}>
-              <Grid
-                item
-                xs={5}
-                sm={3.5}
-                md={2.5}
-                key={recipe._id}
-                sx={{ mb: 6, position: "relative" }}
-              >
-                <RecipeCard recipe={recipe} />
-              </Grid>
-            </ThemeProvider>
-          ))
-        )}
-      </Grid>
-    </Box>
+    <Grid
+      container
+      justifyContent="center"
+      columnSpacing={2}
+      sx={{ width: "95%", maxWidth: "1600px", mx: "auto", mt: 5 }}
+      zeroMinWidth={false}
+    >
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        recipes.map((recipe) => (
+          <ThemeProvider theme={theme} key={recipe._id}>
+            <Grid
+              item
+              xs={10}
+              sm={5}
+              md={2.5}
+              key={recipe._id}
+              sx={{ mb: 6, position: "relative" }}
+            >
+              <RecipeCard recipe={recipe} />
+            </Grid>
+          </ThemeProvider>
+        ))
+      )}
+    </Grid>
   );
 };
 

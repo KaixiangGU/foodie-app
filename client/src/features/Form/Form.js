@@ -9,6 +9,8 @@ import Methods from "./Methods";
 const Form = () => {
   const dispatch = useDispatch();
   const { recipe, selectedRecipeId, reset, page } = useStateContext();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  console.log(user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +18,7 @@ const Form = () => {
     if (selectedRecipeId) {
       dispatch(updateRecipe(selectedRecipeId, recipe));
     } else {
-      dispatch(createRecipe(recipe));
+      dispatch(createRecipe({ ...recipe, author: user?.name }));
     }
     reset();
   };
