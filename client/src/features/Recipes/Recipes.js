@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useStateContext } from "../../context/StateContext";
 import RecipeCard from "../RecipeCards/RecipeCard";
-import { Grid, Box, CircularProgress, createTheme, ThemeProvider } from "@mui/material";
+import { Grid, CircularProgress, createTheme, ThemeProvider } from "@mui/material";
 
 const Recipes = () => {
   const { filterRecipes } = useStateContext();

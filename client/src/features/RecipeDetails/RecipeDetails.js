@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Paper, Grid, Box, Typography, Divider, CircularProgress, Link } from "@mui/material";
+import { Paper, Grid, Box, Typography, CircularProgress, Link } from "@mui/material";
 import AspectRatio from "@mui/joy/AspectRatio";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -41,13 +41,17 @@ const RecipeDetails = () => {
           sx={{
             backgroundColor: "orange",
             width: "60%",
-            minHeight: "180px",
+            minHeight: "150px",
             color: "white",
             mx: "auto",
             p: 2,
           }}
         >
-          <Typography variant="h3" component="h1" sx={{ fontFamily: "Tiro Devanagari Marathi" }}>
+          <Typography
+            variant="h3"
+            component="h1"
+            sx={{ fontSize: "calc(1.5rem + .5vw)", fontFamily: "Tiro Devanagari Marathi" }}
+          >
             {recipe.title}
           </Typography>
           <Typography variant="h6" component="h2" color="info">
@@ -62,20 +66,20 @@ const RecipeDetails = () => {
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <AccessTimeIcon fontSize="large" sx={{ mr: 0.5 }} />
-              <Typography variant="h6" component="span">
+              <AccessTimeIcon fontSize="large" sx={{ fontSize: "calc(1.2rem + .5vw)", mr: 0.5 }} />
+              <Typography variant="h6" component="span" sx={{ fontSize: "calc(.8rem + .5vw)" }}>
                 {recipe.cookTime}
               </Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <PeopleIcon fontSize="large" sx={{ mr: 0.5 }} />
-              <Typography variant="h6" component="span">
+              <PeopleIcon fontSize="large" sx={{ fontSize: "calc(1.2rem + .5vw)", mr: 0.5 }} />
+              <Typography variant="h6" component="span" sx={{ fontSize: "calc(.8rem + .5vw)" }}>
                 {recipe.servings}{" "}
               </Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <RestaurantIcon fontSize="large" sx={{ mr: 0.5 }} />
-              <Typography variant="h6" component="span">
+              <RestaurantIcon fontSize="large" sx={{ fontSize: "calc(1.2rem + .5vw)", mr: 0.5 }} />
+              <Typography variant="h6" component="span" sx={{ fontSize: "calc(.8rem + .5vw)" }}>
                 {recipe.difficulty}
               </Typography>
             </Box>

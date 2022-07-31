@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useStateContext } from "../../context/StateContext";
 import FileBase from "react-file-base64";
 import CloseIcon from "@mui/icons-material/Close";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Typography, Box, Button, IconButton, Icon } from "@mui/material";
+import { Paper, Typography, Box, Button, IconButton } from "@mui/material";
 import { useStateContext } from "../../context/StateContext";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";

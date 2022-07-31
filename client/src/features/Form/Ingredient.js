@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, TextField, IconButton } from "@mui/material";
-import CancelIcon from "@mui/icons-material/Cancel";
 import { useStateContext } from "../../context/StateContext";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 

@@ -78,9 +78,11 @@ const RecipeCard = ({ recipe }) => {
           <Typography variant="subtitle2" component="p" color="textSecondary" sx={{ flex: 1 }}>
             Created by {recipe.author}
           </Typography>
-          <IconButton size="small" onClick={() => handleLikeRecipe(recipe._id)}>
-            {recipe.favorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
-          </IconButton>
+          {(user?._id || user?.sub) && (
+            <IconButton size="small" onClick={() => handleLikeRecipe(recipe._id)}>
+              {recipe.favorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
+            </IconButton>
+          )}
           {(user?._id === recipe.creator || user?.sub === recipe.creator) && (
             <>
               <IconButton size="small" onClick={() => setSelectedRecipeId(recipe._id)}>
